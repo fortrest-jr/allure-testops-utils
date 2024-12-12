@@ -15,8 +15,6 @@ jobs:
           java-version: '17'
           distribution: 'graalvm'
       - run: ./gradlew distZip
-#      - run: ls -l ./build/distributions/${project.name}-${project.version}*.zip
-      - run: ls -l ./build/distributions/${project.name}-${project.version}.zip
       - name: Create Release
         uses: actions/create-release@v1
         env:
