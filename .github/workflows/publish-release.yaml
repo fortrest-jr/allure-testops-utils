@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v1
       - uses: graalvm/setup-graalvm@v1
@@ -35,5 +35,4 @@ jobs:
           push: true
           context: build/docker
           tags: |
-            ghcr.io/eroshenkoam/allure-testops-utils:${{ env.PROJECT_VERSION }}
-            ghcr.io/eroshenkoam/allure-testops-utils:latest
+            ghcr.io/fortrest-jr/allure-testops-utils:${{ env.PROJECT_VERSION }}
