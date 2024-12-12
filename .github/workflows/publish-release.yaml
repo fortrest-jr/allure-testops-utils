@@ -16,11 +16,11 @@ jobs:
           distribution: 'graalvm'
       - run: ./gradlew build
       - run: ./gradlew nativeCompile
-      - run: ./gradlew bundleDistribution --info
       - run: ls -lR ./build
+      - run: ./gradlew bundleDistribution --info
+      - run: ls -lR ${project.name}-${project.version}/
       - name: Verify file exists
         run: ls -l ./build/*.zip
-      - run: ls -lR ${project.name}-${project.version}/
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
