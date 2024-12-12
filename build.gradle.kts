@@ -2,6 +2,8 @@ import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import com.bmuschko.gradle.docker.tasks.image.Dockerfile
 import org.gradle.kotlin.dsl.support.unzipTo
 import org.gradle.internal.os.OperatingSystem;
+import org.gradle.api.tasks.bundling.Zip
+
 
 plugins {
     java
@@ -49,6 +51,22 @@ val buildDockerImage by tasks.creating(DockerBuildImage::class) {
     images.set(setOf(
             "allure/${project.name}:${project.version}"
     ))
+}
+
+tasks.register<Zip>("bundleDistribution") {
+    group = "distribution"
+    description = "Bundle bin and lib directories into a single archive for release."
+    dependsOn("prepareDockerOutput")
+
+    val outputDir = file("$buildDir/release")
+    from("$buildDir/resources/main/bin") {
+        into("bin")
+    }
+    from("$buildDir/resources/main/lib") {
+        into("lib")
+    }
+    destinationDirectory.set(outputDir)
+    archiveFileName.set("${project.name}-${project.version}.zip")
 }
 
 repositories {
