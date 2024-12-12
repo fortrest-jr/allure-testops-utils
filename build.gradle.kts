@@ -53,21 +53,6 @@ val buildDockerImage by tasks.creating(DockerBuildImage::class) {
     ))
 }
 
-tasks.register<Zip>("bundleDistribution") {
-    group = "Build"
-    dependsOn(prepareDockerOutput)
-
-    val outputDir = file("build")
-    from("${project.name}-${project.version}/bin") {
-        into("bin")
-    }
-    from("${project.name}-${project.version}/lib") {
-        into("lib")
-    }
-    destinationDirectory.set(outputDir)
-    archiveFileName.set("${project.name}-${project.version}.zip")
-}
-
 repositories {
     mavenLocal()
     mavenCentral()
