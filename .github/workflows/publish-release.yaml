@@ -8,17 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v1
       - uses: graalvm/setup-graalvm@v1
         with:
           java-version: '17'
           distribution: 'graalvm'
       - run: ./gradlew build
       - run: ./gradlew nativeCompile
+      - run: ./gradlew prepareDockerfile
       - run: ./gradlew bundleDistribution
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
+      - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
