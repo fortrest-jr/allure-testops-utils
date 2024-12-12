@@ -16,6 +16,8 @@ jobs:
       - run: ./gradlew build
       - run: ./gradlew nativeCompile
       - run: ./gradlew bundleDistribution
+      - name: Verify file exists
+        run: ls -l ./build/release/*.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

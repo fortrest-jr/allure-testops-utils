@@ -55,13 +55,13 @@ val buildDockerImage by tasks.creating(DockerBuildImage::class) {
 
 tasks.register<Zip>("bundleDistribution") {
     group = "Build"
-    dependsOn("prepareDockerOutput")
+    dependsOn(prepareDockerOutput)
 
-    val outputDir = file("$buildDir/release")
-    from("$buildDir/resources/main/bin") {
+    val outputDir = file("build/release")
+    from("${project.name}-${project.version}/bin") {
         into("bin")
     }
-    from("$buildDir/resources/main/lib") {
+    from("${project.name}-${project.version}/lib") {
         into("lib")
     }
     destinationDirectory.set(outputDir)
