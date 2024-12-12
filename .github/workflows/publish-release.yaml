@@ -15,7 +15,9 @@ jobs:
           distribution: 'graalvm'
       - run: ./gradlew build
       - run: ./gradlew nativeCompile
-      - run: ./gradlew bundleDistribution
+      - run: ls -lR ./build
+      - run: ./gradlew bundleDistribution --info
+      - run: ls -lR ./build
       - name: Verify file exists
         run: ls -l ./build/release/*.zip
       - uses: actions/upload-release-asset@v1.0.1
