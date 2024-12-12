@@ -57,7 +57,7 @@ tasks.register<Zip>("bundleDistribution") {
     group = "Build"
     dependsOn(prepareDockerOutput)
 
-    val outputDir = file("build/release")
+    val outputDir = file("build")
     from("${project.name}-${project.version}/bin") {
         into("bin")
     }
