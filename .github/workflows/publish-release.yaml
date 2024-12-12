@@ -15,12 +15,7 @@ jobs:
           java-version: '17'
           distribution: 'graalvm'
       - run: ./gradlew distZip
-#      - run: ./gradlew nativeCompile
-#      - run: ls -lR ${project.name}-${project.version}/
-#      - name: Verify file exists
-#        run: ls -l ./build/*.zip
-      - run: ls -l ./build/distributions/allure-testops-utils-1.0-SNAPSHOT.zip
-      - run: ls -l ./build/distributions/${project.name}-${project.version}*.zip
+#      - run: ls -l ./build/distributions/${project.name}-${project.version}*.zip
       - run: ls -l ./build/distributions/${project.name}-${project.version}.zip
       - name: Create Release
         uses: actions/create-release@v1
