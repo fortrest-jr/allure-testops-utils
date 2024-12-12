@@ -15,7 +15,6 @@ jobs:
           distribution: 'graalvm'
       - run: ./gradlew build
       - run: ./gradlew nativeCompile
-      - run: ./gradlew prepareDockerfile
       - run: ./gradlew bundleDistribution
       - uses: actions/upload-release-asset@v1.0.1
         env:

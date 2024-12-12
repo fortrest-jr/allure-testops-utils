@@ -54,8 +54,7 @@ val buildDockerImage by tasks.creating(DockerBuildImage::class) {
 }
 
 tasks.register<Zip>("bundleDistribution") {
-    group = "distribution"
-    description = "Bundle bin and lib directories into a single archive for release."
+    group = "Build"
     dependsOn("prepareDockerOutput")
 
     val outputDir = file("$buildDir/release")
