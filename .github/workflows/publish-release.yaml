@@ -14,6 +14,8 @@ jobs:
           java-version: '17'
           distribution: 'graalvm'
       - run: ./gradlew distZip
+      - run: ls -la ./build/distributions
+        name: list possible distributions if next step fails, check it and update file path
       - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

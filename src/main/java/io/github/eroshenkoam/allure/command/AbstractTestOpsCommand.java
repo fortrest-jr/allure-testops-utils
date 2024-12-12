@@ -91,7 +91,7 @@ public abstract class AbstractTestOpsCommand implements Runnable {
     protected ServiceBuilder getAllureServiceBuilder() {
         return new ServiceBuilder(allureEndpoint)
                 .insecure(allureInsecure)
-                .authBasic(allureUsername, allurePassword)
+//                .authBasic(allureUsername, allurePassword)
                 .authToken(allureToken);
     }
 
